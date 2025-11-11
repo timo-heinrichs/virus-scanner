@@ -1,8 +1,11 @@
 package de.heinrichs.virus_scanner.integration.virustotal;
 
-import de.heinrichs.virus_scanner.integration.virustotal.dto.FileDTO;
+import de.heinrichs.virus_scanner.dto.FileDTO;
+import de.heinrichs.virus_scanner.util.FileDTOUtil;
 import jakarta.annotation.PostConstruct;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.*;
@@ -19,6 +22,8 @@ import static de.heinrichs.virus_scanner.util.StringUtils.*;
  */
 @Component
 public class VirusTotalAPIClient {
+
+    private static final Logger logger = LoggerFactory.getLogger(VirusTotalAPIClient.class);
 
     @Value("${virustotal.api.url}")
     private String apiBaseURL;

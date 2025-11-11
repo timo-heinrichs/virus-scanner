@@ -1,6 +1,11 @@
 package de.heinrichs.virus_scanner.util;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 public class StringUtils {
+
+    private static final Logger logger = LoggerFactory.getLogger(StringUtils.class);
 
     /**
      * A Util Method to join two pieces of Strings together,

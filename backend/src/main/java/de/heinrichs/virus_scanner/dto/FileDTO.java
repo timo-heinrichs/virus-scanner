@@ -1,4 +1,4 @@
-package de.heinrichs.virus_scanner.integration.virustotal.dto;
+package de.heinrichs.virus_scanner.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
@@ -70,6 +70,7 @@ public class FileDTO {
 
         private String md5;
 
+        @JsonProperty("meaningful_name")
         private String meaningfulName;
 
         private List<String> names;
@@ -119,6 +120,9 @@ public class FileDTO {
         private Integer uniqueSources;
 
         private String vhash;
+
+        @JsonProperty("threat_verdict")
+        private String threatVerdict;
     }
 
     @Data
