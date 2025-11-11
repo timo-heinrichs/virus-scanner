@@ -17,10 +17,10 @@ public class VirusScannerService {
     private static final Logger logger = LoggerFactory.getLogger(VirusScannerConfiguration.class);
 
     @Autowired
-    VirusTotalAPIClient vtac;
+    private VirusTotalAPIClient vtac;
 
     @Autowired
-    ScanResultDTOFactory srdf;
+    private ScanResultDTOFactory srdf;
 
     public ScanResultDTO scanMD5(String md5) {
         FileDTO fileDTO = vtac.getFileReportByHash(md5);

@@ -18,7 +18,7 @@ public class VirusScannerController {
     private VirusScannerService vss;
 
     @GetMapping("/scan/file")
-    public ScanResultDTO sayHello(@RequestParam String md5) {
+    public ScanResultDTO scanFile(@RequestParam String md5) {
         return vss.scanMD5(md5);
     }
 
