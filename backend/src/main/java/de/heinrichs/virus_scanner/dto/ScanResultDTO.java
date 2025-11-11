@@ -1,6 +1,7 @@
 package de.heinrichs.virus_scanner.dto;
 
-import de.heinrichs.virus_scanner.constants.ScanResultType;
+import de.heinrichs.virus_scanner.constants.ScanType;
+import de.heinrichs.virus_scanner.constants.ThreatLevel;
 import lombok.Data;
 
 @Data
@@ -10,13 +11,13 @@ public class ScanResultDTO {
 
     private String md5Hash;
 
-    private ScanResultType scanResultType;
+    private ScanType scanType;
 
     private Integer totalEngines;
 
     private Integer threatCount;
 
-    private String verdict;
+    private ThreatLevel verdict;
 
     private Long lastAnalysisDate;
 

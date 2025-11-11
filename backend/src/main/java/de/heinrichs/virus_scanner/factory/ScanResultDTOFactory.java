@@ -1,6 +1,6 @@
 package de.heinrichs.virus_scanner.factory;
 
-import de.heinrichs.virus_scanner.constants.ScanResultType;
+import de.heinrichs.virus_scanner.constants.ThreatLevel;
 import de.heinrichs.virus_scanner.dto.FileDTO;
 import de.heinrichs.virus_scanner.dto.ScanResultDTO;
 import de.heinrichs.virus_scanner.util.FileDTOUtil;
@@ -19,12 +19,29 @@ public class ScanResultDTOFactory {
         return new ScanResultDTO() {{
             setId(attr.getMeaningfulName());
             setMd5Hash(attr.getMd5());
-            setScanResultType(ScanResultType.FILE_HASH);
             setTotalEngines(FileDTOUtil.getTotalEngines(fileDTO));
             setThreatCount(FileDTOUtil.getThreatCount(fileDTO));
-            setVerdict(attr.getThreatVerdict());
             setLastAnalysisDate(attr.getLastAnalysisDate());
+            setVerdict(getThreatVerdict(fileDTO));
         }};
+    }
+
+    private ThreatLevel getThreatVerdict(FileDTO fileDTO) {
+        FileDTO.LastAnalysisStats las = fileDTO.getData().getAttributes().getLastAnalysisStats();
+
+        if (las == null)
+            return ThreatLevel.UNKNOWN;
+
+        if (las.getMalicious() > 0)
+            return ThreatLevel.MALICIOUS;
+
+        if (las.getSuspicious() > 0)
+            return ThreatLevel.SUSPICIOUS;
+
+        if (las.getHarmless() > 0)
+            return ThreatLevel.HARMLESS;
+
+        return ThreatLevel.UNKNOWN;
     }
 
 }

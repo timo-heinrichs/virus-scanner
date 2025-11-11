@@ -1,6 +1,6 @@
 package de.heinrichs.virus_scanner.constants;
 
-public enum ScanResultType {
+public enum ScanType {
 
     FILE_HASH,
 
