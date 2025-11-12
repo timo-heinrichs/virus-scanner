@@ -1,7 +1,6 @@
 package de.heinrichs.virus_scanner.integration.virustotal;
 
 import de.heinrichs.virus_scanner.dto.FileDTO;
-import de.heinrichs.virus_scanner.util.FileDTOUtil;
 import jakarta.annotation.PostConstruct;
 
 import org.slf4j.Logger;
@@ -45,7 +44,7 @@ public class VirusTotalAPIClient {
     //GET APIs
     private static final String API_GET_FILE_REPORT = "/files/{fileHash}";
 
-    public FileDTO getFileReportByHash(String fileHash) {
+    public FileDTO getFileReportBySHA256(String fileHash) {
         HttpEntity<FileDTO> entity = new HttpEntity<FileDTO>(headers);
 
         ResponseEntity<FileDTO> response = restTemplate.exchange(

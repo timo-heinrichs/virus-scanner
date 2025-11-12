@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.UUID;
+
 @RestController
 public class VirusScannerController {
 
@@ -18,8 +20,11 @@ public class VirusScannerController {
     private VirusScannerService vss;
 
     @GetMapping("/scan/file")
-    public ScanResultDTO scanFile(@RequestParam String md5) {
-        return vss.scanMD5(md5);
+    public ScanResultDTO scanFile(@RequestParam String sha256) {
+        ScanResultDTO srd = vss.scanSHA256(sha256);
+        srd.setId(UUID.randomUUID().toString());
+
+        return srd;
     }
 
 }

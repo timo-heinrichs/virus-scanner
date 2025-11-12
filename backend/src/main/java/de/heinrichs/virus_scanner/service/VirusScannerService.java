@@ -22,8 +22,8 @@ public class VirusScannerService {
     @Autowired
     private ScanResultDTOFactory srdf;
 
-    public ScanResultDTO scanMD5(String md5) {
-        FileDTO fileDTO = vtac.getFileReportByHash(md5);
+    public ScanResultDTO scanSHA256(String sha256) {
+        FileDTO fileDTO = vtac.getFileReportBySHA256(sha256);
 
         ScanResultDTO scanResultDTO = srdf.fromFileDTO(fileDTO);
         scanResultDTO.setScanType(ScanType.FILE_HASH);

@@ -9,7 +9,9 @@ public class ScanResultDTO {
 
     private String id;
 
-    private String md5Hash;
+    private String name;
+
+    private String sha256;
 
     private ScanType scanType;
 

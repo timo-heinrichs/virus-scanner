@@ -17,8 +17,8 @@ public class ScanResultDTOFactory {
         FileDTO.Attributes attr = fileDTO.getData().getAttributes();
 
         return new ScanResultDTO() {{
-            setId(attr.getMeaningfulName());
-            setMd5Hash(attr.getMd5());
+            setName(attr.getMeaningfulName());
+            setSha256(attr.getSha256());
             setTotalEngines(FileDTOUtil.getTotalEngines(fileDTO));
             setThreatCount(FileDTOUtil.getThreatCount(fileDTO));
             setLastAnalysisDate(attr.getLastAnalysisDate());
