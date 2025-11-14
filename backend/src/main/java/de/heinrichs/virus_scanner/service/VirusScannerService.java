@@ -11,6 +11,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.UUID;
+
 @Service
 public class VirusScannerService {
 
@@ -26,6 +28,7 @@ public class VirusScannerService {
         FileDTO fileDTO = vtac.getFileReportBySHA256(sha256);
 
         ScanResultDTO scanResultDTO = srdf.fromFileDTO(fileDTO);
+        scanResultDTO.setId(UUID.randomUUID().toString());
         scanResultDTO.setScanType(ScanType.FILE_HASH);
 
         return scanResultDTO;

@@ -21,10 +21,7 @@ public class VirusScannerController {
 
     @GetMapping("/scan/file")
     public ScanResultDTO scanFile(@RequestParam String sha256) {
-        ScanResultDTO srd = vss.scanSHA256(sha256);
-        srd.setId(UUID.randomUUID().toString());
-
-        return srd;
+        return vss.scanSHA256(sha256);
     }
 
 }
